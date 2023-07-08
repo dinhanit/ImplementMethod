@@ -1,0 +1,2 @@
+PCA
+CHỨC NĂNG: khám phá dữ liệu, giảm nhiễu, trích xuất đặc trưng và visualize dữ liệu
