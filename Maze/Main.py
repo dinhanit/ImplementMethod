@@ -16,7 +16,7 @@ def mouse_callback(event, x, y, flags, param):
             end = (y, x)
             print("Điểm kết thúc:", end)
 
-image = cv2.imread('maze.jpg', 0)
+image = cv2.imread('Maze.png', 0)
 
 maze = np.where(image < 128, 1, 0)
 
