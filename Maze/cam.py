@@ -1,11 +1,15 @@
 import cv2
 
 # Create a VideoCapture object to capture video from the camera
-cap = cv2.VideoCapture('https://192.168.1.3:8080/video')  # 0 represents the default camera; you can change it to the desired camera index if multiple cameras are available
+ip = ''
+"https://192.168.153.38:8080/video"
+
+cap = cv2.VideoCapture(ip)  # 0 represents the default camera; you can change it to the desired camera index if multiple cameras are available
 
 # Check if the camera is opened successfully
 if not cap.isOpened():
     print("Failed to open the camera")
+    
     exit()
 
 # Initialize variables for cropping
@@ -48,7 +52,7 @@ while True:
         cv2.imshow("Cropped Image", cropped_image)
         cv2.imwrite("Maze.png", cropped_image)
 
-        cv2.waitKey(0)  # Wait until a key is pressed to close the cropped image window
+        # cv2.waitKey(0)  # Wait until a key is pressed to close the cropped image window
 
 # Release the VideoCapture object and destroy all windows
 cap.release()

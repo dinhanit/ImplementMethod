@@ -4,6 +4,7 @@ from collections import deque
 
 start = None
 end = None
+thresh = 170
 
 def mouse_callback(event, x, y, flags, param):
     global start, end
@@ -11,14 +12,15 @@ def mouse_callback(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         if start is None:
             start = (y, x)
-            print("Điểm bắt đầu:", start)
+            print("Start Point:", start)
         elif end is None:
             end = (y, x)
-            print("Điểm kết thúc:", end)
+            print("End Point:", end)
 
 image = cv2.imread('Maze.png', 0)
 
-maze = np.where(image < 128, 1, 0)
+
+maze = np.where(image < thresh, 1, 0)
 
 height, width = maze.shape
 
@@ -62,7 +64,7 @@ while True:
         solution_path = solve_maze_bfs(start, end)
         
         if solution_path is None:
-            print("Không tìm thấy đường đi trong mê cung.")
+            print("Not Path")
         else:
             result_image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
             for cell in solution_path:
